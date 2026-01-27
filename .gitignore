@@ -1,0 +1,46 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ---- Virtualenv ----
+.venv/
+venv/
+ENV/
+env/
+
+# ---- Environment variables (never commit secrets) ----
+.env
+.env.*.local
+
+# ---- Logs ----
+*.log
+
+# ---- Tests / Coverage ----
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# ---- Type check / linters ----
+.mypy_cache/
+.ruff_cache/
+
+# ---- Build / packaging ----
+build/
+dist/
+*.egg-info/
+
+# ---- IDEs ----
+.idea/
+.vscode/
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
+# ---- FastAPI / Uvicorn ----
+*.pid
+
+# ---- Local data (docx, json, txt and others) ----
+data/
