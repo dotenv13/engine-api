@@ -37,3 +37,6 @@ class EngineDAO:
         result = await session.execute(select(Engine).where(Engine.product_id == product_id).options(selectinload(Engine.images)))
         return result.scalars().one_or_none()
 
+
+engine_dao = EngineDAO()
+
