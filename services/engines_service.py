@@ -6,10 +6,7 @@ from schemas.engine import EngineOut
 
 class EnginesService:
     def _images_to_urls(self, engine) -> List[str]:
-        """
-        engine.images -> ["url1", "url2", ...]
-        + сортировка по sort_order (чтобы порядок был стабильным)
-        """
+        #engine.images -> ["url1", "url2", ...] + сортировка по sort_order (чтобы порядок был стабильным)
         if not getattr(engine, "images", None):
             return []
 
@@ -22,14 +19,19 @@ class EnginesService:
                            make: Optional[str] = None,
                            model: Optional[str] = None,
                            year: Optional[str] = None,
+                           price_min: Optional[int] = None,
+                           price_max: Optional[int] = None,
                            limit: int = 20,
                            offset: int = 0,
                            ) -> List[EngineOut]:
+
         engines = await engine_dao.list_engines(
             session=session,
             make=make,
             model=model,
             year=year,
+            price_min=price_min,
+            price_max=price_max,
             limit=limit,
             offset=offset,
         )
@@ -55,11 +57,12 @@ class EnginesService:
         ]
 
     async def get_engine(
-        self,
-        session: AsyncSession,
-        product_id: int,
+            self,
+            session: AsyncSession,
+            product_id: int,
     ) -> Optional[EngineOut]:
         engine = await engine_dao.get_engine(session=session, product_id=product_id)
+
         if not engine:
             return None
 

@@ -11,6 +11,8 @@ class EngineDAO:
                            make: Optional[str] = None,
                            model: Optional[str] = None,
                            year: Optional[str] = None,
+                           price_min: Optional[int] = None,
+                           price_max: Optional[int] = None,
                            limit: int = 20,
                            offset: int = 0,
                            ) -> List[Engine]:
@@ -23,6 +25,11 @@ class EngineDAO:
             result = result.where(Engine.model == model)
         if year:
             result = result.where(Engine.year == year)
+
+        if price_min is not None:
+            result = result.where(Engine.price >= price_min)
+        if price_max is not None:
+            result = result.where(Engine.price <= price_max)
 
         #пагинация
         result = result.limit(limit).offset(offset)

@@ -8,17 +8,13 @@ class EngineBase(BaseModel):
     make: Optional[str] = None
     model: Optional[str] = None
     year: Optional[str] = None
-
     engine_code: Optional[str] = None
     engine_type: Optional[str] = None
-
     price: Optional[int] = None
     currency: Optional[str] = None
-
     stock_text: Optional[str] = None
     oem: Optional[str] = None
     description: Optional[str] = None
-
 
 class EngineOut(EngineBase):
     images: List[str] = []

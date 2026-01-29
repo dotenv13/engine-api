@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from db.database import engine, Base
 from routes import engines
 
@@ -9,4 +9,4 @@ async def startup():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
-app.include_router(engines.router, tags=["engines"])
+app.include_router(engines.router)
